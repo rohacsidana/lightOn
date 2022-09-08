@@ -49,3 +49,38 @@ body {
     background-color: red;
 }
 
+@media screen and (max-width: 850px) {
+    .x5 {
+        max-width: 600px;
+    }
+
+    .x5 .lampa {
+        border-radius: 50px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .x4 {
+        max-width: 500px;
+    }
+
+    .x4 .lampa {
+        border-radius: 50px;
+        width: 100px;
+        height: 100px;
+    }
+}
+
+@media screen and (max-width: 520px) {
+    .x3 {
+        max-width: 400px;
+    }
+
+    .x3 .lampa {
+        border-radius: 50px;
+        width: 100px;
+        height: 100px;
+    }
+}
