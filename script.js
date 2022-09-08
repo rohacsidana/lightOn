@@ -2,6 +2,7 @@ let sorHossz;
 let osztalyJelenleg;
 let felKapcsolva = "green";
 let leKapcsolva = "yellow";
+let kattintasok = 0
 
 $(function () {
     gombok()
@@ -16,6 +17,7 @@ function gombok() {
             osztalyJelenleg = `x${gombok[i].id}`
             palya(lampakSzama, osztalyJelenleg)
             sorHossz = parseInt(gombok[i].id);
+            kattintasok = 0
         })
     }
 }
@@ -39,12 +41,15 @@ function palya(n, osztaly) {
 function gombKatt() {
     let lampak = $(".lampa")
     for (let i = 0; i < lampak.length; i++) {
-
-        lampak[i].on("click", hanyadikElem)
+        lampak[i].addEventListener("click", hanyadikElem)
     }
 }
 
+
+
 function hanyadikElem() {
+    kattintasok += 1
+    document.getElementById("kattintasok").innerHTML = kattintasok
     let index = 0
     while ($(".lampa")[index] != event.target) {
         index++
@@ -94,7 +99,7 @@ function szinValt(index) {
     let elem = $(".lampa")[index];
     let alapSzin = elem.style.backgroundColor;
     let szin = leKapcsolva;
-    
+
     if (alapSzin == leKapcsolva) {
         szin = felKapcsolva
     }
@@ -109,7 +114,8 @@ function ellenorzes() {
         n++;
     }
     if (!(n < elemek.length)) {
-        alert("Győztél");
+        alert(`Győztél! Lépések száma: ${kattintasok}`);
         palya(sorHossz * sorHossz, osztalyJelenleg);
+        kattintasok = 0
     }
 }
