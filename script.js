@@ -3,7 +3,7 @@
 let sorHossz;
 let osztalyJelenleg;
 let felKapcsolva = "green";
-let leKapcsolva = "red";
+let leKapcsolva = "yellow";
 
 
 
