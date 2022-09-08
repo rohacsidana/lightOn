@@ -28,10 +28,10 @@ function palya(n, osztaly) {
     for (let index = 0; index < n; index++) {
         let random = Math.random()
         if (random <= 0.5 && zoldek < n / 2) {
-            txt += `<div class="lampa" style="background-color: green;"></div>`
+            txt += `<div class="lampa" style="background-color: rgb(85, 223, 0);"></div>`
             zoldek += 1
         } else {
-            txt += `<div class="lampa" style="background-color: red;"></div>`
+            txt += `<div class="lampa" style="background-color: rgb(255, 179, 0);"></div>`
 
         }
 
