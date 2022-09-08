@@ -2,6 +2,7 @@ window.addEventListener("load", init)
 
 function init() {
     gombok()
+
 }
 
 
@@ -9,6 +10,7 @@ function gombok() {
     console.log("szia :)");
     document.getElementById("2").addEventListener("click", function () {
         palya(4, "x2")
+
     })
     document.getElementById("3").addEventListener("click", function () {
         palya(9, "x3")
@@ -28,10 +30,10 @@ function palya(n, osztaly) {
     for (let index = 0; index < n; index++) {
         let random = Math.random()
         if (random <= 0.5 && zoldek < n / 2) {
-            txt += `<div class="lampa" style="background-color: green;"></div>`
+            txt += `<div class="lampa ${index}" style="background-color: green;"></div>`
             zoldek += 1
         } else {
-            txt += `<div class="lampa" style="background-color: red;"></div>`
+            txt += `<div class="lampa ${index}" style="background-color: red;"></div>`
 
         }
 
@@ -39,58 +41,86 @@ function palya(n, osztaly) {
 
     document.getElementById("jatek").innerHTML = `<div id="fotarolo" class="${osztaly}"></div>`
     document.getElementById("fotarolo").innerHTML = txt
-    randomFel(n)
+    gombKatt()
+}
+//eseménykezelő a kattintásra, ellenőrzés h nyertünk-e 
+
+function gombKatt() {
+    console.log("gombkatt")
+    let lampak = document.querySelectorAll(".lampa")
+    console.log(lampak)
+    for (let i = 0; i < lampak.length; i++) {
+
+        lampak[i].addEventListener("click", hanyadikElem)
+    }
 }
 
-function randomFel(n) {
+function hanyadikElem() {
+    let index = 0
+    console.log("hanyadikelem")
+    while (document.querySelectorAll(".lampa")[index] != event.target) {
+        index++
+        console.log("hanyadikelemfor")
+    }
+    let hanyadik = index
+    console.log("hanyadikelem vege")
+    valt(index)
 
 }
 
 let sorHossz;
 function valt(n) { // a kattintott elem indexe 0-n ig
-    let y = floor(n / sorHossz);
+    console.log("valt")
+    let y = Math.floor(n / sorHossz);
     let x = n % sorHossz;
 
     if (x != 0) {
         bal(n);
+        console.log("bal")
     }
     if (x != sorHossz - 1) {
         jobb(n);
+        console.log("jobb");
     }
     if (y != 0) {
         fent(n)
+        console.log("fent");
     }
     if (y != sorHossz) {
         lent(n);
+        console.log("lent");
     }
     szinValt(n);
 }
 
 
 function fent(n) {
-    szinValt(n-sorHossz);
+    szinValt(n - sorHossz);
 }
 
 function lent(n) {
-    szinValt(n+sorHossz);
+    szinValt(n + sorHossz);
 }
 
 function bal(n) {
-    szinValt(n-1);
+    szinValt(n - 1);
 }
 
 function jobb(n) {
-    szinValt(n+1);
+    szinValt(n + 1);
 }
 
 
-function szinValt(index){
-    let elem = $("#fotarolo")[index];
-    let alapSzin = elem.css("background-color");
+function szinValt(index) {
+    let elem = $(".lampa")[index];
+
+    console.log(elem)
+    //let alapSzin = elem.css("background-color");
+    let alapSzin = elem.style.backgroundColor;
     let szin = "red";
-    if(alapSzin == "red"){
+    if (alapSzin == "red") {
         szin = "green"
     }
-    elem.css("background-color", szin);
-
+    //elem.css("background-color", szin);
+    elem.style.backgroundColor = szin
 }
