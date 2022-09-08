@@ -1,29 +1,35 @@
-window.addEventListener("load", init)
-let sorHossz;
-let osztalyJelenleg;
-function init() {
+/*window.addEventListener("load", init)*/
+
+/*function init() {
     gombok()
 
-}
+}*/
+
+let sorHossz;
+let osztalyJelenleg;
+
+$(function(){
+    gombok()
+})
 
 function gombok() {
 
-    document.getElementById("2").addEventListener("click", function () {
+    $("#2").on("click", function () {
         palya(4, "x2")
         osztalyJelenleg = "x2";
         sorHossz = 2;
     })
-    document.getElementById("3").addEventListener("click", function () {
+    $("#3").on("click", function () {
         palya(9, "x3")
         osztalyJelenleg = "x3";
         sorHossz = 3;
     })
-    document.getElementById("4").addEventListener("click", function () {
+    $("#4").on("click", function () {
         palya(16, "x4")
         osztalyJelenleg = "x4";
         sorHossz = 4;
     })
-    document.getElementById("5").addEventListener("click", function () {
+    $("#5").on("click", function () {
         palya(25, "x5")
         osztalyJelenleg = "x5";
         sorHossz = 5;
@@ -96,7 +102,8 @@ function valt(n) { // a kattintott elem indexe 0-n ig
         fent(n)
 
     }
-    if (y != sorHossz) {
+    if (y + 1 != sorHossz) {
+
         lent(n);
 
     }
@@ -127,6 +134,7 @@ function jobb(n) {
 
 
 function szinValt(index) {
+
     let elem = $(".lampa")[index];
     console.log(elem);
 
