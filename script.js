@@ -52,38 +52,45 @@ function valt(n) { // a kattintott elem indexe 0-n ig
     let x = n % sorHossz;
 
     if (x != 0) {
-        bal();
+        bal(n);
     }
     if (x != sorHossz - 1) {
-        jobb();
+        jobb(n);
     }
     if (y != 0) {
-        fent()
+        fent(n)
     }
     if (y != sorHossz) {
-        lent();
+        lent(n);
     }
     kattintottElem(n);
 }
 
 
-function fent() {
-
+function fent(n) {
+    szinValt(n-sorHossz);
 }
 
-function lent() {
-
+function lent(n) {
+    szinValt(n+sorHossz);
 }
 
-function bal() {
-
+function bal(n) {
+    szinValt(n-1);
 }
 
-function jobb() {
-
+function jobb(n) {
+    szinValt(n+1);
 }
 
-function kattintottElem(index) {
 
+function szinValt(index){
+    let elem = $("#fotarolo")[index];
+    let alapSzin = elem.css("background-color");
+    let szin = "red";
+    if(alapSzin == "red"){
+        szin = "green"
+    }
+    elem.css("background-color", szin);
 
 }
