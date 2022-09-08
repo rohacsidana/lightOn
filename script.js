@@ -1,5 +1,5 @@
 window.addEventListener("load", init)
-
+let sorHossz;
 function init() {
     gombok()
 
@@ -7,19 +7,22 @@ function init() {
 
 
 function gombok() {
-    console.log("szia :)");
+    
     document.getElementById("2").addEventListener("click", function () {
         palya(4, "x2")
-
+        sorHossz = 2;
     })
     document.getElementById("3").addEventListener("click", function () {
         palya(9, "x3")
+        sorHossz = 3;
     })
     document.getElementById("4").addEventListener("click", function () {
         palya(16, "x4")
+        sorHossz = 4;
     })
     document.getElementById("5").addEventListener("click", function () {
         palya(25, "x5")
+        sorHossz = 5;
     })
 
 }
@@ -46,9 +49,9 @@ function palya(n, osztaly) {
 //eseménykezelő a kattintásra, ellenőrzés h nyertünk-e 
 
 function gombKatt() {
-    console.log("gombkatt")
+  
     let lampak = document.querySelectorAll(".lampa")
-    console.log(lampak)
+
     for (let i = 0; i < lampak.length; i++) {
 
         lampak[i].addEventListener("click", hanyadikElem)
@@ -57,26 +60,27 @@ function gombKatt() {
 
 function hanyadikElem() {
     let index = 0
-    console.log("hanyadikelem")
+   
     while (document.querySelectorAll(".lampa")[index] != event.target) {
         index++
-        console.log("hanyadikelemfor")
+     
     }
     let hanyadik = index
-    console.log("hanyadikelem vege")
+
     valt(index)
 
 }
 
-let sorHossz;
+
 function valt(n) { // a kattintott elem indexe 0-n ig
-    console.log("valt")
+
     let y = Math.floor(n / sorHossz);
     let x = n % sorHossz;
-
+    szinValt(n);
     if (x != 0) {
         bal(n);
-        console.log("bal")
+        console.log("bal");
+        
     }
     if (x != sorHossz - 1) {
         jobb(n);
@@ -90,7 +94,8 @@ function valt(n) { // a kattintott elem indexe 0-n ig
         lent(n);
         console.log("lent");
     }
-    szinValt(n);
+    
+    
 }
 
 
@@ -114,13 +119,15 @@ function jobb(n) {
 function szinValt(index) {
     let elem = $(".lampa")[index];
 
-    console.log(elem)
+
     //let alapSzin = elem.css("background-color");
     let alapSzin = elem.style.backgroundColor;
     let szin = "red";
     if (alapSzin == "red") {
+        
         szin = "green"
     }
     //elem.css("background-color", szin);
     elem.style.backgroundColor = szin
+    
 }
