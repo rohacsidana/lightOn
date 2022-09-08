@@ -1,0 +1,29 @@
+#fotarolo {
+    padding: 10px;
+    border: 1px solid black;
+}
+
+.x2 {
+    margin: auto;
+    max-width: 300px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.lampa {
+    border: 1px solid black;
+    border-radius: 50px;
+    width: 100px;
+    height: 100px;
+    margin: 5px;
+}
+
+.fel {
+    background-color: green;
+}
+
+.le {
+    background-color: red;
+}
