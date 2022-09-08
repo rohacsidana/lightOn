@@ -19,21 +19,26 @@ function gombok() {
         palya(4, "x2")
         osztalyJelenleg = "x2";
         sorHossz = 2;
+        kattintasok = 0
     })
     $("#3").on("click", function () {
         palya(9, "x3")
         osztalyJelenleg = "x3";
         sorHossz = 3;
+        kattintasok = 0
     })
     $("#4").on("click", function () {
         palya(16, "x4")
         osztalyJelenleg = "x4";
         sorHossz = 4;
+        kattintasok = 0
+
     })
     $("#5").on("click", function () {
         palya(25, "x5")
         osztalyJelenleg = "x5";
         sorHossz = 5;
+        kattintasok = 0
     })
 
 }
@@ -72,7 +77,11 @@ function gombKatt() {
     }
 }
 
+let kattintasok = 0
+
 function hanyadikElem() {
+    kattintasok += 1
+    document.getElementById("kattintasok").innerHTML = kattintasok
     let index = 0
 
     while (document.querySelectorAll(".lampa")[index] != event.target) {
@@ -82,6 +91,8 @@ function hanyadikElem() {
     let hanyadik = index
 
     valt(index)
+
+   
 
 }
 
@@ -160,7 +171,8 @@ function ellenorzes() {
         n++;
     }
     if (!(n < elemek.length)) {
-        alert("Győztél");
+        alert(`Győztél! Lépések száma: ${kattintasok}`);
         palya(sorHossz * sorHossz, osztalyJelenleg);
+        kattintasok = 0
     }
 }
