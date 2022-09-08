@@ -63,7 +63,7 @@ function valt(n) { // a kattintott elem indexe 0-n ig
     if (y != sorHossz) {
         lent(n);
     }
-    kattintottElem(n);
+    szinValt(n);
 }
 
 
