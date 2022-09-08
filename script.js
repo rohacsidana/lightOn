@@ -1,5 +1,6 @@
 window.addEventListener("load", init)
 let sorHossz;
+let osztalyJelenleg;
 function init() {
     gombok()
 
@@ -10,18 +11,22 @@ function gombok() {
     
     document.getElementById("2").addEventListener("click", function () {
         palya(4, "x2")
+        osztalyJelenleg = "x2";
         sorHossz = 2;
     })
     document.getElementById("3").addEventListener("click", function () {
         palya(9, "x3")
+        osztalyJelenleg = "x3";
         sorHossz = 3;
     })
     document.getElementById("4").addEventListener("click", function () {
         palya(16, "x4")
+        osztalyJelenleg = "x4";
         sorHossz = 4;
     })
     document.getElementById("5").addEventListener("click", function () {
         palya(25, "x5")
+        osztalyJelenleg = "x5";
         sorHossz = 5;
     })
 
@@ -79,22 +84,22 @@ function valt(n) { // a kattintott elem indexe 0-n ig
     szinValt(n);
     if (x != 0) {
         bal(n);
-        console.log("bal");
+        
         
     }
     if (x != sorHossz - 1) {
         jobb(n);
-        console.log("jobb");
+       
     }
     if (y != 0) {
         fent(n)
-        console.log("fent");
+       
     }
     if (y != sorHossz) {
         lent(n);
-        console.log("lent");
+       
     }
-    
+    ellenorzes();
     
 }
 
@@ -130,4 +135,16 @@ function szinValt(index) {
     //elem.css("background-color", szin);
     elem.style.backgroundColor = szin
     
+}
+
+function ellenorzes() {
+    let n = 0;
+    let elemek =  $(".lampa");
+    while(n < elemek.length && (elemek[n].style.backgroundColor == "green")){
+        n++;
+    }
+    if(!(n < elemek.length)){
+        alert("Győztél");
+        palya(sorHossz*sorHossz , osztalyJelenleg);
+    }
 }
