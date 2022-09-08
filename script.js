@@ -95,7 +95,8 @@ function valt(n) { // a kattintott elem indexe 0-n ig
         fent(n)
        
     }
-    if (y != sorHossz) {
+    if (y+1 != sorHossz) {
+    
         lent(n);
        
     }
@@ -122,6 +123,7 @@ function jobb(n) {
 
 
 function szinValt(index) {
+    
     let elem = $(".lampa")[index];
 
 
@@ -129,7 +131,6 @@ function szinValt(index) {
     let alapSzin = elem.style.backgroundColor;
     let szin = "red";
     if (alapSzin == "red") {
-        
         szin = "green"
     }
     //elem.css("background-color", szin);
