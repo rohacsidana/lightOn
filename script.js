@@ -1,6 +1,8 @@
 window.addEventListener("load", init)
 let sorHossz;
 let osztalyJelenleg;
+let felKapcsolva = "green";
+let leKapcsolva = "red";
 function init() {
     gombok()
 
@@ -38,10 +40,10 @@ function palya(n, osztaly) {
     for (let index = 0; index < n; index++) {
         let random = Math.random()
         if (random <= 0.5 && zoldek < n / 2) {
-            txt += `<div class="lampa ${index}" style="background-color: green;"></div>`
+            txt += `<div class="lampa ${index}" style="background-color: ${felKapcsolva};"></div>`
             zoldek += 1
         } else {
-            txt += `<div class="lampa ${index}" style="background-color: red;"></div>`
+            txt += `<div class="lampa ${index}" style="background-color: ${leKapcsolva};"></div>`
 
         }
 
@@ -129,9 +131,9 @@ function szinValt(index) {
 
     //let alapSzin = elem.css("background-color");
     let alapSzin = elem.style.backgroundColor;
-    let szin = "red";
-    if (alapSzin == "red") {
-        szin = "green"
+    let szin = leKapcsolva;
+    if (alapSzin == leKapcsolva) {
+        szin = felKapcsolva
     }
     //elem.css("background-color", szin);
     elem.style.backgroundColor = szin
@@ -141,7 +143,7 @@ function szinValt(index) {
 function ellenorzes() {
     let n = 0;
     let elemek =  $(".lampa");
-    while(n < elemek.length && (elemek[n].style.backgroundColor == "green")){
+    while(n < elemek.length && (elemek[n].style.backgroundColor == felKapcsolva)){
         n++;
     }
     if(!(n < elemek.length)){
